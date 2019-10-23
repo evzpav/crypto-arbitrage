@@ -1,0 +1,19 @@
+exchange_configs: 
+  - exchange: binance.com
+    public_key: ""
+    secret_key: ""
+  - exchange: bitfinex.com
+    public_key: ""
+    secret_key: ""
+  - exchange: bittrex.com
+    public_key: ""
+    secret_key: ""
+  - exchange: bitmex.com
+    public_key: ""
+    secret_key: ""
+  - exchange: cryptopia.co.nz
+    public_key: ""
+    secret_key: ""
+  - exchange: hitbtc.com
+    public_key: ""
+    secret_key: ""
