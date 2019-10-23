@@ -1,4 +1,4 @@
-package domain
+package config
 
 import (
 	"io/ioutil"

@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/evzpav/crypto-arbitrage/domain"
+	"github.com/evzpav/crypto-arbitrage/pkg/config"
 	"github.com/evzpav/crypto-arbitrage/pkg/exchange"
-	"github.com/evzpav/crypto-arbitrage/pkg/helper"
+	"github.com/evzpav/crypto-arbitrage/pkg/orderbook"
 	goex "github.com/nntaoli-project/GoEx"
 )
 
@@ -19,7 +19,6 @@ var exchangeNames = []string{
 	goex.HITBTC,
 }
 
-
 var shitcoins = []string{
 	"NXS",
 	"EOS",
@@ -32,17 +31,17 @@ var shitcoins = []string{
 }
 
 func main() {
-	config, err := domain.NewConfig("./configs.yaml")
+	config, err := config.NewConfig("./configs.yaml")
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	pairs := helper.AssembleCurrencyPairs(shitcoins)
+	pairs := orderbook.AssembleCurrencyPairs(shitcoins)
 	exchanges := exchange.GetExchangeWrappers(config, exchangeNames)
 	var arbitrageQuoteTarget = 0.15
 
 	for _, pair := range pairs {
-		helper.CalculateSpread(arbitrageQuoteTarget, pair, exchanges)
+		orderbook.CalculateSpread(arbitrageQuoteTarget, pair, exchanges)
 	}
 
 }
